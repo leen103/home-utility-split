@@ -13,23 +13,21 @@ import type { ReactNode } from "react";
 import { useMeterMate } from "@/lib/metermate/store";
 import { cn } from "@/lib/utils";
 
-type NavItem = { to: string; label: string; icon: typeof Home };
-
-const tenantNav: NavItem[] = [
+const tenantNav = [
   { to: "/tenant", label: "หน้าหลัก", icon: Home },
   { to: "/reading", label: "บันทึกเลข", icon: Gauge },
   { to: "/bill", label: "บิลรวม", icon: FileText },
   { to: "/tenant/payment", label: "ชำระเงิน", icon: Wallet },
   { to: "/history", label: "ประวัติ", icon: History },
-];
+] as const;
 
-const ownerNav: NavItem[] = [
+const ownerNav = [
   { to: "/owner", label: "หน้าหลัก", icon: Home },
   { to: "/reading", label: "บันทึกเลข", icon: Gauge },
   { to: "/owner/verify", label: "ตรวจสอบ", icon: CheckCircle2 },
   { to: "/history", label: "ประวัติ", icon: History },
   { to: "/owner/rates", label: "อัตรา", icon: Settings },
-];
+] as const;
 
 export function AppShell({
   title,
