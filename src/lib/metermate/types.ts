@@ -12,17 +12,17 @@ export interface Reading {
   previous: number;
   current: number;
   source: "manual" | "ocr";
-  confidence?: number;
-  photoName?: string;
-  photoDataUrl?: string;
+  confidence?: number | undefined;
+  photoName?: string | undefined;
+  photoDataUrl?: string | undefined;
   updatedAt: string;
 }
 
 export interface BillUpload {
   total: number | null;
-  fileName?: string;
-  dataUrl?: string;
-  uploadedAt?: string;
+  fileName?: string | undefined;
+  dataUrl?: string | undefined;
+  uploadedAt?: string | undefined;
 }
 
 export interface MonthData {
@@ -32,11 +32,11 @@ export interface MonthData {
   bills: Record<Utility, BillUpload>;
   payment: {
     status: PaymentStatus;
-    paidAt?: string;
-    note?: string;
-    slipName?: string;
-    slipDataUrl?: string;
-    verifiedAt?: string;
+    paidAt?: string | undefined;
+    note?: string | undefined;
+    slipName?: string | undefined;
+    slipDataUrl?: string | undefined;
+    verifiedAt?: string | undefined;
   };
 }
 
@@ -83,8 +83,8 @@ export interface DraftReading {
   monthId: string;
   previous: number;
   current: number | null;
-  confidence?: number;
+  confidence?: number | undefined;
   source: "manual" | "ocr";
-  photoName?: string;
-  photoDataUrl?: string;
+  photoName?: string | undefined;
+  photoDataUrl?: string | undefined;
 }
