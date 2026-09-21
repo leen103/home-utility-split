@@ -10,7 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BillRouteImport } from './routes/bill'
 import { Route as OwnerIndexRouteImport } from './routes/owner.index'
+import { Route as ReadingIndexRouteImport } from './routes/reading.index'
+import { Route as ReadingReviewRouteImport } from './routes/reading.review'
 import { Route as TenantIndexRouteImport } from './routes/tenant.index'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +21,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BillRoute = BillRouteImport.update({
+  id: '/bill',
+  path: '/bill',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OwnerIndexRoute = OwnerIndexRouteImport.update({
   id: '/owner/',
   path: '/owner/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReadingIndexRoute = ReadingIndexRouteImport.update({
+  id: '/reading/',
+  path: '/reading/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReadingReviewRoute = ReadingReviewRouteImport.update({
+  id: '/reading/review',
+  path: '/reading/review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TenantIndexRoute = TenantIndexRouteImport.update({
@@ -31,31 +49,51 @@ const TenantIndexRoute = TenantIndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bill': typeof BillRoute
+  '/reading/review': typeof ReadingReviewRoute
   '/owner/': typeof OwnerIndexRoute
+  '/reading/': typeof ReadingIndexRoute
   '/tenant/': typeof TenantIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bill': typeof BillRoute
+  '/reading/review': typeof ReadingReviewRoute
   '/owner': typeof OwnerIndexRoute
+  '/reading': typeof ReadingIndexRoute
   '/tenant': typeof TenantIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bill': typeof BillRoute
+  '/reading/review': typeof ReadingReviewRoute
   '/owner/': typeof OwnerIndexRoute
+  '/reading/': typeof ReadingIndexRoute
   '/tenant/': typeof TenantIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/owner/' | '/tenant/'
+  fullPaths:
+    '/' | '/bill' | '/reading/review' | '/owner/' | '/reading/' | '/tenant/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/owner' | '/tenant'
-  id: '__root__' | '/' | '/owner/' | '/tenant/'
+  to: '/' | '/bill' | '/reading/review' | '/owner' | '/reading' | '/tenant'
+  id:
+    | '__root__'
+    | '/'
+    | '/bill'
+    | '/reading/review'
+    | '/owner/'
+    | '/reading/'
+    | '/tenant/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BillRoute: typeof BillRoute
+  ReadingReviewRoute: typeof ReadingReviewRoute
   OwnerIndexRoute: typeof OwnerIndexRoute
+  ReadingIndexRoute: typeof ReadingIndexRoute
   TenantIndexRoute: typeof TenantIndexRoute
 }
 
@@ -68,11 +106,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bill': {
+      id: '/bill'
+      path: '/bill'
+      fullPath: '/bill'
+      preLoaderRoute: typeof BillRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/owner/': {
       id: '/owner/'
       path: '/owner'
       fullPath: '/owner/'
       preLoaderRoute: typeof OwnerIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reading/': {
+      id: '/reading/'
+      path: '/reading'
+      fullPath: '/reading/'
+      preLoaderRoute: typeof ReadingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reading/review': {
+      id: '/reading/review'
+      path: '/reading/review'
+      fullPath: '/reading/review'
+      preLoaderRoute: typeof ReadingReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tenant/': {
@@ -87,7 +146,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BillRoute: BillRoute,
+  ReadingReviewRoute: ReadingReviewRoute,
   OwnerIndexRoute: OwnerIndexRoute,
+  ReadingIndexRoute: ReadingIndexRoute,
   TenantIndexRoute: TenantIndexRoute,
 }
 export const routeTree = rootRouteImport
