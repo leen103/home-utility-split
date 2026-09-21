@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AllocationRouteImport } from './routes/allocation'
+import { Route as BillRouteImport } from './routes/bill'
+import { Route as CalcRouteImport } from './routes/calc'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as OwnerIndexRouteImport } from './routes/owner.index'
+import { Route as ReadingIndexRouteImport } from './routes/reading.index'
+import { Route as ReadingReviewRouteImport } from './routes/reading.review'
+import { Route as TenantIndexRouteImport } from './routes/tenant.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AllocationRoute = AllocationRouteImport.update({
+  id: '/allocation',
+  path: '/allocation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BillRoute = BillRouteImport.update({
+  id: '/bill',
+  path: '/bill',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalcRoute = CalcRouteImport.update({
+  id: '/calc',
+  path: '/calc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerIndexRoute = OwnerIndexRouteImport.update({
+  id: '/owner/',
+  path: '/owner/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReadingIndexRoute = ReadingIndexRouteImport.update({
+  id: '/reading/',
+  path: '/reading/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReadingReviewRoute = ReadingReviewRouteImport.update({
+  id: '/reading/review',
+  path: '/reading/review',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TenantIndexRoute = TenantIndexRouteImport.update({
+  id: '/tenant/',
+  path: '/tenant/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/allocation': typeof AllocationRoute
+  '/bill': typeof BillRoute
+  '/calc': typeof CalcRoute
+  '/history': typeof HistoryRoute
+  '/reading/review': typeof ReadingReviewRoute
+  '/owner/': typeof OwnerIndexRoute
+  '/reading/': typeof ReadingIndexRoute
+  '/tenant/': typeof TenantIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/allocation': typeof AllocationRoute
+  '/bill': typeof BillRoute
+  '/calc': typeof CalcRoute
+  '/history': typeof HistoryRoute
+  '/reading/review': typeof ReadingReviewRoute
+  '/owner': typeof OwnerIndexRoute
+  '/reading': typeof ReadingIndexRoute
+  '/tenant': typeof TenantIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/allocation': typeof AllocationRoute
+  '/bill': typeof BillRoute
+  '/calc': typeof CalcRoute
+  '/history': typeof HistoryRoute
+  '/reading/review': typeof ReadingReviewRoute
+  '/owner/': typeof OwnerIndexRoute
+  '/reading/': typeof ReadingIndexRoute
+  '/tenant/': typeof TenantIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/allocation'
+    | '/bill'
+    | '/calc'
+    | '/history'
+    | '/reading/review'
+    | '/owner/'
+    | '/reading/'
+    | '/tenant/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/allocation'
+    | '/bill'
+    | '/calc'
+    | '/history'
+    | '/reading/review'
+    | '/owner'
+    | '/reading'
+    | '/tenant'
+  id:
+    | '__root__'
+    | '/'
+    | '/allocation'
+    | '/bill'
+    | '/calc'
+    | '/history'
+    | '/reading/review'
+    | '/owner/'
+    | '/reading/'
+    | '/tenant/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AllocationRoute: typeof AllocationRoute
+  BillRoute: typeof BillRoute
+  CalcRoute: typeof CalcRoute
+  HistoryRoute: typeof HistoryRoute
+  ReadingReviewRoute: typeof ReadingReviewRoute
+  OwnerIndexRoute: typeof OwnerIndexRoute
+  ReadingIndexRoute: typeof ReadingIndexRoute
+  TenantIndexRoute: typeof TenantIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/allocation': {
+      id: '/allocation'
+      path: '/allocation'
+      fullPath: '/allocation'
+      preLoaderRoute: typeof AllocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bill': {
+      id: '/bill'
+      path: '/bill'
+      fullPath: '/bill'
+      preLoaderRoute: typeof BillRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calc': {
+      id: '/calc'
+      path: '/calc'
+      fullPath: '/calc'
+      preLoaderRoute: typeof CalcRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner/': {
+      id: '/owner/'
+      path: '/owner'
+      fullPath: '/owner/'
+      preLoaderRoute: typeof OwnerIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reading/': {
+      id: '/reading/'
+      path: '/reading'
+      fullPath: '/reading/'
+      preLoaderRoute: typeof ReadingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reading/review': {
+      id: '/reading/review'
+      path: '/reading/review'
+      fullPath: '/reading/review'
+      preLoaderRoute: typeof ReadingReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tenant/': {
+      id: '/tenant/'
+      path: '/tenant'
+      fullPath: '/tenant/'
+      preLoaderRoute: typeof TenantIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AllocationRoute: AllocationRoute,
+  BillRoute: BillRoute,
+  CalcRoute: CalcRoute,
+  HistoryRoute: HistoryRoute,
+  ReadingReviewRoute: ReadingReviewRoute,
+  OwnerIndexRoute: OwnerIndexRoute,
+  ReadingIndexRoute: ReadingIndexRoute,
+  TenantIndexRoute: TenantIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
