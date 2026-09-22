@@ -15,9 +15,11 @@ import { Route as BillRouteImport } from './routes/bill'
 import { Route as CalcRouteImport } from './routes/calc'
 import { Route as HistoryRouteImport } from './routes/history'
 import { Route as OwnerIndexRouteImport } from './routes/owner.index'
+import { Route as OwnerVerifyRouteImport } from './routes/owner.verify'
 import { Route as ReadingIndexRouteImport } from './routes/reading.index'
 import { Route as ReadingReviewRouteImport } from './routes/reading.review'
 import { Route as TenantIndexRouteImport } from './routes/tenant.index'
+import { Route as TenantPaymentRouteImport } from './routes/tenant.payment'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -49,6 +51,11 @@ const OwnerIndexRoute = OwnerIndexRouteImport.update({
   path: '/owner/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OwnerVerifyRoute = OwnerVerifyRouteImport.update({
+  id: '/owner/verify',
+  path: '/owner/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReadingIndexRoute = ReadingIndexRouteImport.update({
   id: '/reading/',
   path: '/reading/',
@@ -64,6 +71,11 @@ const TenantIndexRoute = TenantIndexRouteImport.update({
   path: '/tenant/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenantPaymentRoute = TenantPaymentRouteImport.update({
+  id: '/tenant/payment',
+  path: '/tenant/payment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -71,7 +83,9 @@ export interface FileRoutesByFullPath {
   '/bill': typeof BillRoute
   '/calc': typeof CalcRoute
   '/history': typeof HistoryRoute
+  '/owner/verify': typeof OwnerVerifyRoute
   '/reading/review': typeof ReadingReviewRoute
+  '/tenant/payment': typeof TenantPaymentRoute
   '/owner/': typeof OwnerIndexRoute
   '/reading/': typeof ReadingIndexRoute
   '/tenant/': typeof TenantIndexRoute
@@ -82,7 +96,9 @@ export interface FileRoutesByTo {
   '/bill': typeof BillRoute
   '/calc': typeof CalcRoute
   '/history': typeof HistoryRoute
+  '/owner/verify': typeof OwnerVerifyRoute
   '/reading/review': typeof ReadingReviewRoute
+  '/tenant/payment': typeof TenantPaymentRoute
   '/owner': typeof OwnerIndexRoute
   '/reading': typeof ReadingIndexRoute
   '/tenant': typeof TenantIndexRoute
@@ -94,7 +110,9 @@ export interface FileRoutesById {
   '/bill': typeof BillRoute
   '/calc': typeof CalcRoute
   '/history': typeof HistoryRoute
+  '/owner/verify': typeof OwnerVerifyRoute
   '/reading/review': typeof ReadingReviewRoute
+  '/tenant/payment': typeof TenantPaymentRoute
   '/owner/': typeof OwnerIndexRoute
   '/reading/': typeof ReadingIndexRoute
   '/tenant/': typeof TenantIndexRoute
@@ -107,7 +125,9 @@ export interface FileRouteTypes {
     | '/bill'
     | '/calc'
     | '/history'
+    | '/owner/verify'
     | '/reading/review'
+    | '/tenant/payment'
     | '/owner/'
     | '/reading/'
     | '/tenant/'
@@ -118,7 +138,9 @@ export interface FileRouteTypes {
     | '/bill'
     | '/calc'
     | '/history'
+    | '/owner/verify'
     | '/reading/review'
+    | '/tenant/payment'
     | '/owner'
     | '/reading'
     | '/tenant'
@@ -129,7 +151,9 @@ export interface FileRouteTypes {
     | '/bill'
     | '/calc'
     | '/history'
+    | '/owner/verify'
     | '/reading/review'
+    | '/tenant/payment'
     | '/owner/'
     | '/reading/'
     | '/tenant/'
@@ -141,7 +165,9 @@ export interface RootRouteChildren {
   BillRoute: typeof BillRoute
   CalcRoute: typeof CalcRoute
   HistoryRoute: typeof HistoryRoute
+  OwnerVerifyRoute: typeof OwnerVerifyRoute
   ReadingReviewRoute: typeof ReadingReviewRoute
+  TenantPaymentRoute: typeof TenantPaymentRoute
   OwnerIndexRoute: typeof OwnerIndexRoute
   ReadingIndexRoute: typeof ReadingIndexRoute
   TenantIndexRoute: typeof TenantIndexRoute
@@ -191,6 +217,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OwnerIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/owner/verify': {
+      id: '/owner/verify'
+      path: '/owner/verify'
+      fullPath: '/owner/verify'
+      preLoaderRoute: typeof OwnerVerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reading/': {
       id: '/reading/'
       path: '/reading'
@@ -212,6 +245,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TenantIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tenant/payment': {
+      id: '/tenant/payment'
+      path: '/tenant/payment'
+      fullPath: '/tenant/payment'
+      preLoaderRoute: typeof TenantPaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -221,7 +261,9 @@ const rootRouteChildren: RootRouteChildren = {
   BillRoute: BillRoute,
   CalcRoute: CalcRoute,
   HistoryRoute: HistoryRoute,
+  OwnerVerifyRoute: OwnerVerifyRoute,
   ReadingReviewRoute: ReadingReviewRoute,
+  TenantPaymentRoute: TenantPaymentRoute,
   OwnerIndexRoute: OwnerIndexRoute,
   ReadingIndexRoute: ReadingIndexRoute,
   TenantIndexRoute: TenantIndexRoute,
